@@ -41,8 +41,10 @@ curl http://206.189.136.114:31135
 
 ```bash
 # Load Balancer's public IP
-
+curl http://64.225.85.160
 ```
+![image](https://user-images.githubusercontent.com/44951703/215193063-d5d89a0b-5ba4-46bd-a318-59f2797303cf.png)
+
 
 
 
