@@ -13,9 +13,9 @@ Setup Kubernetes cluser from scratch
 
 ### Installing Kubernetes cluster
 * Execute the playbook:
-```bash
-ansible-playbook -i hosts main.yml
-```
+    ```bash
+    ansible-playbook -i hosts main.yml
+    ```
 
 ### Checking Kubernetes cluster
 ```bash
@@ -27,6 +27,14 @@ kubectl get po -A -o wide
 ```
 ![image](https://user-images.githubusercontent.com/44951703/215072746-b6281bbf-6e3c-4fc3-8960-865043d920a3.png)
 
+### Checking Ingress controller
+```bash
+kubectl get svc -n ingress-nginx
+```
+
+```bash
+curl http://206.189.136.114:31135
+```
 
 
 
