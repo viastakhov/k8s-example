@@ -4,9 +4,9 @@ Setup Kubernetes cluser from scratch
 # 1. Setup Kubernetes Cluster
 
 ### Prerequisites
-* An SSH key pair on your local machine[1].
-* Server running CentOS 7 with at least 2GB RAM and 2 vCPUs each and you should be able to SSH into each server as the root user with your SSH key pair[2].
-* Ansible installed on your local machine[3],[4].
+* An SSH key pair on your local machine<sup>[1]</sup>
+* Server running CentOS 7 with at least 2GB RAM and 2 vCPUs each and you should be able to SSH into each server as the root user with your SSH key pair<sup>[2]</sup>
+* Ansible installed on your local machine<sup>[3],[4]</sup>
 
 ### Setting Up the Workspace Directory and Ansible Inventory File
 * Setup a `./ansible/hosts.ini` file containing inventory information such as the IP addresses of your servers and the groups that each server belongs to.
