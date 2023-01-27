@@ -1,0 +1,35 @@
+- hosts: lb
+  become: true
+  tasks:
+    - name: Disable SELinux
+      command: setenforce 0
+
+    - name: Disable SELinux on reboot
+      selinux:
+        state: disabled
+
+    - name: Add epel-release repo
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Ensure nginx.conf is set
+      template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+
+    - name: Install nginx-mod-stream
+      yum:
+        name: nginx-mod-stream
+        state: present
+
+    - name: Start Nginx
+      service: > 
+        name=nginx
+        state=started
+        enabled=yes

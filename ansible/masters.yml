@@ -1,0 +1,65 @@
+- hosts: master-01
+  become: yes
+  tasks:
+    - name: Initialize the cluster
+      command: kubeadm init --pod-network-cidr={{ cidr }} --control-plane-endpoint={{ lb_ip }} --upload-certs
+      vars:
+        cidr: 10.244.0.0/16
+        lb_ip: "{{ hostvars[groups['lb'][0]].ansible_host }}"
+
+    - name: Create .kube directory
+      become: yes
+      become_user: centos
+      file:
+        path: $HOME/.kube
+        state: directory
+        mode: 0755
+
+    - name: Copy admin.conf to user's kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/centos/.kube/config
+        remote_src: yes
+        owner: centos
+
+    - name: Install pod network
+      become: yes
+      become_user: centos
+      # Flannel plugin:
+      command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+      # Calico plugin:
+      # command: kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
+
+    - name: Re-upload certificates
+      command: kubeadm init phase upload-certs --upload-certs
+      register: upload_cert_command_raw
+
+    - name: Get certificate key
+      set_fact:
+        cert_key: "{{ upload_cert_command_raw.stdout_lines[2] }}"
+  
+    - name: Generate join command
+      command: kubeadm token create --print-join-command
+      register: join_command_raw
+
+    - name: Set master join command
+      set_fact:
+        master_join_command: "{{ join_command_raw.stdout_lines[0] }} --control-plane --certificate-key {{ cert_key }}"
+
+- hosts: masters, !master-01
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: Debug
+      debug:
+        msg={{ hostvars['master-01']['master_join_command'] }}
+    
+    - name: Join masters to cluster
+      command: "{{ hostvars['master-01']['master_join_command'] }} --ignore-preflight-errors all"  
+
+- hosts: master-01
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: Rebalance core-dns pods on cluster
+      command: kubectl -n kube-system rollout restart deployment coredns
