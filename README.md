@@ -1,5 +1,5 @@
 # k8s-example
-Setup Kubernetes from scratch
+Setup Kubernetes cluser from scratch
 
 # 1. Setup Kubernetes Cluster
 
@@ -22,8 +22,8 @@ ansible-playbook -i hosts main.yml
 
 
 ---
-[1] https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
-[2] https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-centos7
-[3] https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-the-control-machine
-[4] https://phoenixnap.com/kb/install-ansible-on-windows
+[1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
+[2]: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-centos7
+[3]: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-the-control-machine
+[4]: https://phoenixnap.com/kb/install-ansible-on-windows
 
