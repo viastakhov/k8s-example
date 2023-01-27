@@ -36,7 +36,8 @@ kubectl get svc -n ingress-nginx
 ```bash
 curl http://206.189.136.114:31135
 ```
-![image](https://user-images.githubusercontent.com/44951703/215191300-d69eff39-d47f-4e94-a48c-4e78c34dbcbf.png)
+![image](https://user-images.githubusercontent.com/44951703/215191488-eb95e515-5c8a-4098-a482-5860a88f46b0.png)
+
 
 
 
