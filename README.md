@@ -17,6 +17,15 @@ Setup Kubernetes cluser from scratch
 ansible-playbook -i hosts main.yml
 ```
 
+### Checking Kubernetes cluster
+```bash
+kubectl get no -o wide
+```
+![image](https://user-images.githubusercontent.com/44951703/215072456-dc4178b1-f9c3-4664-941f-7b8f1464924d.png)
+```bash
+kubectl get po -A -o wide
+```
+![image](https://user-images.githubusercontent.com/44951703/215072746-b6281bbf-6e3c-4fc3-8960-865043d920a3.png)
 
 
 
