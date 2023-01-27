@@ -34,11 +34,15 @@ kubectl get svc -n ingress-nginx
 ```
 ![image](https://user-images.githubusercontent.com/44951703/215191109-eb30e9d5-4bbc-45ec-a843-e66016dcab54.png)
 ```bash
+# Node IP
 curl http://206.189.136.114:31135
 ```
 ![image](https://user-images.githubusercontent.com/44951703/215191488-eb95e515-5c8a-4098-a482-5860a88f46b0.png)
 
+```bash
+# Load Balancer's public IP
 
+```
 
 
 
