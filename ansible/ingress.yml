@@ -1,0 +1,7 @@
+- hosts: master-01
+  become: true
+  become_user: centos
+  gather_facts: false
+  tasks:
+    - name: Install Nginx ingress controller
+      command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/baremetal/deploy.yaml

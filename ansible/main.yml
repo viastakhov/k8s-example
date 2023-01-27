@@ -3,3 +3,4 @@
 - import_playbook: nginx.yml
 - import_playbook: masters.yml
 - import_playbook: workers.yml
+- import_playbook: ingress.yml
