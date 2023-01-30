@@ -1,6 +1,8 @@
 - hosts: all, !lb
   become: yes
-  gather_facts: no
+  gather_facts: yes
+  vars_files:
+    - vars/main.yml
   tasks:
     - name: Disable swap
       command: swapoff -a
@@ -56,16 +58,21 @@
 
     - name: Install kubelet
       yum:
-          name: kubelet-1.22.2
-          state: present
-          update_cache: true
-          allow_downgrade: yes
+        name: kubelet-1.22.2
+        state: present
+        update_cache: true
+        allow_downgrade: yes
 
     - name: Install kubeadm
       yum:
-          name: kubeadm-1.22.2
-          state: present
-          allow_downgrade: yes
+        name: kubeadm-1.22.2
+        state: present
+        allow_downgrade: yes
+
+    - name: Define KUBELET_EXTRA_ARGS
+      blockinfile:
+        path: /etc/sysconfig/kubelet
+        block: KUBELET_EXTRA_ARGS="--node-ip={{ hostvars[inventory_hostname]['ansible_facts'][private_network_interface]['ipv4']['address'] }}"
 
     - name: Start kubelet
       service:
@@ -79,6 +86,6 @@
   tasks:
     - name: Install kubectl
       yum:
-          name: kubectl-1.22.0
-          state: present
-          allow_downgrade: yes
+        name: kubectl-1.22.0
+        state: present
+        allow_downgrade: yes
