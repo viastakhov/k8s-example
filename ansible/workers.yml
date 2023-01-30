@@ -1,6 +1,6 @@
 - hosts: master-01
   become: yes
-  gather_facts: false
+  gather_facts: no
   tasks:
     - name: Generate join command
       command: kubeadm token create --print-join-command
@@ -16,6 +16,7 @@
 
 - hosts: workers
   become: yes
+  gather_facts: no
   tasks:
     - name: Join to cluster
       command: "{{ hostvars['master-01']['join_command'] }} --ignore-preflight-errors all"

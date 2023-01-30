@@ -1,11 +1,17 @@
+- hosts: lb
+  gather_facts: yes
+
 - hosts: master-01
+  vars_files:
+    - vars/main.yml
   become: yes
+  gather_facts: no
   tasks:
     - name: Initialize the cluster
       command: kubeadm init --pod-network-cidr={{ cidr }} --control-plane-endpoint={{ lb_ip }} --upload-certs
       vars:
-        cidr: 10.244.0.0/16
-        lb_ip: "{{ hostvars[groups['lb'][0]].ansible_host }}"
+        cidr: "{{ pod_network_cidr }}"
+        lb_ip: "{{ hostvars[groups['lb'][0]]['ansible_facts'][private_network_interface]['ipv4']['address'] }}"
 
     - name: Create .kube directory
       become: yes
@@ -48,7 +54,7 @@
 
 - hosts: masters, !master-01
   become: yes
-  gather_facts: false
+  gather_facts: no
   tasks:
     - name: Debug
       debug:
@@ -59,7 +65,8 @@
 
 - hosts: master-01
   become: yes
-  gather_facts: false
+  become_user: centos
+  gather_facts: no
   tasks:
     - name: Rebalance core-dns pods on cluster
       command: kubectl -n kube-system rollout restart deployment coredns

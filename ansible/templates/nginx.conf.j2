@@ -12,7 +12,7 @@ events {
 stream {
     upstream masters {
 {% for host in groups['masters'] %}
-        server {{ hostvars[host].ansible_host }}:6443;
+        server {{ hostvars[host]['ansible_facts'][private_network_interface]['ipv4']['address'] }}:6443;
 {% endfor %}
     }
 

@@ -1,4 +1,10 @@
+- hosts: masters
+  gather_facts: yes
+
 - hosts: lb
+  vars_files:
+    - vars/main.yml
+  gather_facts: no
   become: true
   tasks:
     - name: Disable SELinux
