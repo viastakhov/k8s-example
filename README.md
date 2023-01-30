@@ -33,18 +33,13 @@ kubectl get po -A -o wide
 kubectl get po -n ingress-nginx -o wide
 kubectl get svc -n ingress-nginx
 ```
-![image](https://user-images.githubusercontent.com/44951703/215191109-eb30e9d5-4bbc-45ec-a843-e66016dcab54.png)
+![image](https://user-images.githubusercontent.com/44951703/215589953-065b92d5-4f40-4e88-b9b3-10a88376f423.png)
+
 ```bash
 # Node IP
 curl http://206.189.136.114:31135
 ```
-![image](https://user-images.githubusercontent.com/44951703/215191488-eb95e515-5c8a-4098-a482-5860a88f46b0.png)
-
-```bash
-# Load Balancer's public IP
-curl http://64.225.85.160
-```
-![image](https://user-images.githubusercontent.com/44951703/215193402-d7a1164c-b2d7-4169-b389-2704db545024.png)
+![image](https://user-images.githubusercontent.com/44951703/215590958-07459d3e-a309-4d58-90d2-39605bac89de.png)
 
 
 
