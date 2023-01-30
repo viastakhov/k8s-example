@@ -1,5 +1,5 @@
 # k8s-example
-Setup Kubernetes cluser from scratch
+Setup Kubernetes cluster from scratch
 
 # 1. Setup Kubernetes Cluster
 
@@ -21,11 +21,12 @@ Setup Kubernetes cluser from scratch
 ```bash
 kubectl get no -o wide
 ```
-![image](https://user-images.githubusercontent.com/44951703/215072456-dc4178b1-f9c3-4664-941f-7b8f1464924d.png)
+![image](https://user-images.githubusercontent.com/44951703/215588828-364b248f-26e6-4418-9e6a-c5a83593ce0e.png)
+
 ```bash
 kubectl get po -A -o wide
 ```
-![image](https://user-images.githubusercontent.com/44951703/215072746-b6281bbf-6e3c-4fc3-8960-865043d920a3.png)
+![image](https://user-images.githubusercontent.com/44951703/215588982-e5fdd81b-04ed-4dc8-a496-ed84bb73a6bc.png)
 
 ### Checking Ingress controller
 ```bash
