@@ -1,15 +1,16 @@
 # k8s-example
 Setup Kubernetes cluster from scratch
 
-# 1. Setup Kubernetes Cluster
+## 1. Spinning Up Kubernetes Cluster
 
 ### Prerequisites
 * An SSH key pair on your local machine<sup>[1]</sup>
 * Server running CentOS 7 with at least 2GB RAM and 2 vCPUs each and you should be able to SSH into each server as the root user with your SSH key pair<sup>[2]</sup>
 * Ansible installed on your local machine<sup>[3],[4]</sup>
 
-### Setting Up the Workspace Directory and Ansible Inventory File
+### Setting Up the Workspace Directory and Ansible
 * Setup a `./ansible/hosts.ini` file containing inventory information such as the IP addresses of your servers and the groups that each server belongs to.
+* (Optional) Define Ingress NodePorts in `./ansible/vars/main.yml`[5]
 
 ### Installing Kubernetes cluster
 * Execute the playbook:
@@ -40,12 +41,20 @@ curl http://64.227.146.19:31904
 ```
 ![image](https://user-images.githubusercontent.com/44951703/215590958-07459d3e-a309-4d58-90d2-39605bac89de.png)
 
+#TODO: curl to LB
 
+## 2. Deploying services to Kubernetes cluster
 
+### Deploy the sample app to the cluster
+* Deploy "Online Boutique" demo application:
+    ```bash
+    kubectl apply -f https://raw.githubusercontent.com/viastakhov/microservices-demo/main/release/kubernetes-manifests.yaml
+    ```
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
 [2]: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-centos7
 [3]: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-the-control-machine
 [4]: https://phoenixnap.com/kb/install-ansible-on-windows
-
+[5]: https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
+[6]: https://github.com/viastakhov/microservices-demo

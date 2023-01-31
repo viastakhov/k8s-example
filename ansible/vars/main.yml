@@ -1,3 +1,6 @@
 ---
 private_network_interface: eth1
 pod_network_cidr: 10.244.0.0/16
+
+ingress_node_port_http: 30080
+ingress_node_port_https: 30443

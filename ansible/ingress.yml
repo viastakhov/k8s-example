@@ -2,6 +2,16 @@
   become: true
   become_user: centos
   gather_facts: false
+  vars_files:
+    - vars/main.yml  
   tasks:
     - name: Install Nginx ingress controller
-      command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/baremetal/deploy.yaml
+      command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.1/deploy/static/provider/baremetal/deploy.yaml
+
+    - name: Create ingress-nginx-controller.yaml
+      template:
+        src: templates/ingress-nginx-controller.yaml.j2
+        dest: /tmp/ingress-nginx-controller.yaml
+
+    - name: Apply Nginx ingress controller object with specific NodePort
+      command: kubectl apply -f /tmp/ingress-nginx-controller.yaml
