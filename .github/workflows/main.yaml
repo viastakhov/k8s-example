@@ -59,7 +59,9 @@ jobs:
           
       - name: Render templates
         run: |
-          helm template helm
+          ls -la
+          cd helm
+          helm template .
           
 #      - name: List files in the repository
 #        run: |
