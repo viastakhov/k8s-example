@@ -50,6 +50,11 @@ curl http://64.227.146.19:31904
     ```bash
     kubectl apply -f https://raw.githubusercontent.com/viastakhov/microservices-demo/main/release/kubernetes-manifests.yaml
     ```
+* Wait for the Pods to be ready:
+    ```bash
+    watch kubectl get pods
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
