@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name:  CI-CD
 run-name: ${{ github.actor }} is running out GitHub Actions 🚀
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
           # context: .
           context: "{{defaultContext}}:src/loadgenerator"
           push: true
-          tags: user/app:latest
+          tags: ghcr.io/viastakhov/loadgenerator:latest
           
           
 #      - name: List files in the repository
