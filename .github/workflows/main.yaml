@@ -25,11 +25,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push an image
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}:./src"
+          push: true
+          tags: user/app:lates
           
-      - name: List files in the repository
-        run: |
-          ls -la ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          
+#      - name: List files in the repository
+#        run: |
+#          ls -la ${{ github.workspace }}
+#      - run: echo "🍏 This job's status is ${{ job.status }}."
 #      - uses: actions-hub/kubectl@master
 #        env:
 #          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
