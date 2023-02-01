@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           #context: "{{defaultContext}}:src"
-          file: "{context}/src/Dockerfile"
+          file: "{{context}}/src/Dockerfile"
           push: true
           tags: user/app:latest
           
