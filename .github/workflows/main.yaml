@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           # context: .
-          context: "{{defaultContext}}:src/loadgenerato"
+          context: "{{defaultContext}}:src/loadgenerator"
           push: true
           tags: user/app:latest
           
