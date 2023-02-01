@@ -15,6 +15,9 @@ on:
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     defaults:
       run:
         working-directory: ./src/loadgenerator
