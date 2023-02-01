@@ -48,13 +48,17 @@ curl http://64.227.146.19:31904
 ### Deploy the sample app to the cluster
 * Deploy "Online Boutique" demo application:
     ```bash
-    kubectl apply -f https://raw.githubusercontent.com/viastakhov/microservices-demo/main/release/kubernetes-manifests.yaml
+    kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml
     ```
 * Wait for the Pods to be ready:
     ```bash
     watch kubectl get pods
     ```
     ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
+* Deploy ingress resource for frontend service:
+    ```bash
+    
+    ```
 * Access the web frontend in a browser using public IP of worker nodes and ingress controller NodePort port:
 # TODO
 * Access the web frontend in a browser using external LoadBalancer's public IP:
