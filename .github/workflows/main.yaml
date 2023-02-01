@@ -17,9 +17,9 @@ jobs:
     permissions:
       contents: read
       packages: write
-    defaults:
-      run:
-        working-directory: ./src/loadgenerator
+ #   defaults:
+ #     run:
+ #       working-directory: ./src/loadgenerator
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -51,7 +51,12 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           
-#  deploy:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./helm  
+    steps:
       - name: Helm Installation
         uses: azure/setup-helm@v1.1
         with:
@@ -60,7 +65,6 @@ jobs:
       - name: Render templates
         run: |
           ls -la
-          cd helm
           helm template .
           
 #      - name: List files in the repository
