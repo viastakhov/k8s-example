@@ -13,6 +13,7 @@ on:
       
 jobs:
   build:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -52,11 +53,15 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           
   deploy:
+    # needs: build
     runs-on: ubuntu-latest
-   # defaults:
-   #   run:
-   #     working-directory: ./helm  
+    defaults:
+      run:
+        working-directory: ./helm  
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+        
       - name: Helm Installation
         uses: azure/setup-helm@v1.1
         with:
@@ -66,7 +71,7 @@ jobs:
         run: |
           pwd
           ls -la
-          helm template helm
+          helm template .
           
 #      - name: List files in the repository
 #        run: |
