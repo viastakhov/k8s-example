@@ -41,7 +41,7 @@ curl http://64.227.146.19:31904
 ```
 ![image](https://user-images.githubusercontent.com/44951703/215590958-07459d3e-a309-4d58-90d2-39605bac89de.png)
 
-#TODO: curl to LB
+# TODO: curl to LB
 
 ## 2. Deploying services to Kubernetes cluster
 
@@ -55,6 +55,10 @@ curl http://64.227.146.19:31904
     watch kubectl get pods
     ```
     ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
+* Access the web frontend in a browser using public IP of worker nodes and ingress controller NodePort port:
+# TODO
+* Access the web frontend in a browser using external LoadBalancer's public IP:
+# TODO
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
