@@ -1,0 +1,6 @@
+apiVersion: v2
+name: loadgenerator
+description: Continuously sends requests imitating realistic user shopping flows to the frontend
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
