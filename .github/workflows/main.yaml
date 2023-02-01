@@ -1,0 +1,11 @@
+name: "Continuous Integration - Main/Release"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  bar:
+    runs-on: [self-hosted]
+    steps:
+      - name: foo
+        run: ls -la
