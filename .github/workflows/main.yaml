@@ -53,9 +53,9 @@ jobs:
           
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./helm  
+   # defaults:
+   #   run:
+   #     working-directory: ./helm  
     steps:
       - name: Helm Installation
         uses: azure/setup-helm@v1.1
@@ -65,7 +65,7 @@ jobs:
       - name: Render templates
         run: |
           ls -la
-          helm template .
+          helm template helm
           
 #      - name: List files in the repository
 #        run: |
