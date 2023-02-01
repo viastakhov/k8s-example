@@ -29,9 +29,9 @@ jobs:
       - name: Build and push an image
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:./src"
+          context: "{{defaultContext}}:src"
           push: true
-          tags: user/app:lates
+          tags: user/app:latest
           
           
 #      - name: List files in the repository
