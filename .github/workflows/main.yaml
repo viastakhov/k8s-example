@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - release/*
     paths-ignore:
       - '**/README.md'
       - '**/.gitignore'
@@ -13,7 +12,7 @@ on:
       - 'kubernetes-manifests/**'
       
 jobs:
-  build-docker-image:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -52,7 +51,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           
-          
+#  deploy:
+    
 #      - name: List files in the repository
 #        run: |
 #          ls -la ${{ github.workspace }}
