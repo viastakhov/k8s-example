@@ -57,7 +57,7 @@ curl http://64.227.146.19:31904
     ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
 * Deploy ingress resource for frontend service:
     ```bash
-    
+    kubectl apply -f https://raw.githubusercontent.com/viastakhov/k8s-example/main/kubernetes-manifests/frontend-ingress.yaml
     ```
 * Access the web frontend in a browser using public IP of worker nodes and ingress controller NodePort port:
 # TODO
