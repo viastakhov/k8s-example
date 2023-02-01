@@ -29,7 +29,7 @@ jobs:
       - name: Build and push an image
         uses: docker/build-push-action@v4
         with:
-          context: /src/loadgenerator
+          context: "./src/loadgenerator"
           #"{{defaultContext}}:src"
           file: "/src/loadgenerator/Dockerfile"
           push: true
