@@ -38,7 +38,7 @@ jobs:
           # context: .
           context: "{{defaultContext}}:src/loadgenerator"
           push: true
-          tags: ghcr.io/viastakhov/loadgenerator:latest
+          tags: viastakhov/loadgenerator:latest
           
           
 #      - name: List files in the repository
