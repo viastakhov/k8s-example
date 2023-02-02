@@ -24,7 +24,8 @@ jobs:
       - name: Install a chart
         run: |
           mkdir ~/.kube
-          echo "::add-mask::${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
+          echo "::add-mask::${{ secrets.KUBE_CONFIG }}"
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
           export KUBECONFIG=~/.kube/config
 
       - name: Check out the repo
