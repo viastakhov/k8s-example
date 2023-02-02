@@ -36,11 +36,23 @@
         state: present
         reload: yes
 
-    - name: Install Docker
+    - name: Install yum utils
       yum:
-        name: docker
-        state: present
-        update_cache: true
+        name: yum-utils
+        state: latest
+
+    - name: Add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docer-ce.repo
+
+    - name: Install Docker
+      package:
+        name: 
+          - docker-ce-20.10.23
+          - docker-ce-cli-20.10.23
+          - containerd.io
+        state: latest
 
     - name: Start Docker
       service:
@@ -72,7 +84,7 @@
     - name: Define KUBELET_EXTRA_ARGS
       blockinfile:
         path: /etc/sysconfig/kubelet
-        block: KUBELET_EXTRA_ARGS="--node-ip={{ hostvars[inventory_hostname]['ansible_facts'][private_network_interface]['ipv4']['address'] }}"
+        block: KUBELET_EXTRA_ARGS="--node-ip={{ hostvars[inventory_hostname]['ansible_facts'][private_network_interface]['ipv4']['address'] }} --cgroup-driver=cgroupfs"
 
     - name: Start kubelet
       service:

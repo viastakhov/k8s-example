@@ -10,7 +10,7 @@ Setup Kubernetes cluster from scratch
 
 ### Setting Up the Workspace Directory and Ansible
 * Setup a `./ansible/hosts.ini` file containing inventory information such as the IP addresses of your servers and the groups that each server belongs to.
-* (Optional) Define Ingress NodePorts in `./ansible/vars/main.yml`[5]
+* (Optional) Define Ingress NodePorts in `./ansible/vars/main.yml`<sup>[5]</sup>
 
 ### Installing Kubernetes cluster
 * Execute the playbook:
@@ -52,7 +52,7 @@ curl http://64.227.146.19:31904
     ```
 * Wait for the Pods to be ready:
     ```bash
-    watch kubectl get pods
+    watch kubectl get pods -o wide
     ```
     ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
 * Deploy ingress resource for frontend service:
@@ -70,6 +70,9 @@ curl http://64.227.146.19:31904
     kubectl -n default label deployment loadgenerator "app.kubernetes.io/managed-by=Helm"
     kubectl -n default annotate deployment loadgenerator "meta.helm.sh/release-name=loadgenerator" "meta.helm.sh/release-namespace=default"
     ```
+* Push a commit into master branch of loadgenerator's source code
+* Verify GitHub Actions workflow runs:
+# TODO: add link and snapshot
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
