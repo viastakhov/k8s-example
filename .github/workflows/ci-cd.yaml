@@ -26,6 +26,7 @@ jobs:
           mkdir ~/.kube
           echo "${KUBE_CONFIG}" | base64 -d > ~/.kube/config
           export KUBECONFIG=~/.kube/config
+          cat ~/.kube/config
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
