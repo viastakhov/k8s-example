@@ -44,7 +44,7 @@ spec:
         image: busybox:latest
         envFrom:
         - configMapRef:
-          name: env-configmap
+            name: env-configmap
       {{- end }}
       containers:
       - name: main
@@ -58,7 +58,7 @@ spec:
         image: {{ .Values.image.repository }}/{{ .Values.loadGenerator.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}
         envFrom:
         - configMapRef:
-          name: env-configmap
+            name: env-configmap
         resources:
           requests:
             cpu: 300m

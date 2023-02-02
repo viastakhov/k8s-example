@@ -74,6 +74,7 @@ jobs:
         run: |
           mkdir ~/.kube
           echo "${KUBE_CONFIG}" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
           export KUBECONFIG=~/.kube/config
           helm upgrade --install loadgenerator . --set image.tag=${{needs.build.outputs.sha_short}} --namespace default
         env:
