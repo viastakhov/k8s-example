@@ -6,9 +6,9 @@ metadata:
   labels:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  #annotations:
-    # app.kubernetes.io/instance: {{ .Release.Name }}
-    # app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
     # app.kubernetes.io/managed-by: Helm
     # meta.helm.sh/release-name: loadgenerator
     # meta.helm.sh/release-namespace: default
@@ -21,6 +21,11 @@ spec:
     metadata:
       labels:
         app: {{ .Values.loadGenerator.name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
+      annotations:
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
