@@ -24,8 +24,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
-      - id: digest
-        run: echo "digest=${{sha}}" >> $GITHUB_OUTPUT
+      - id: checkout
+        run: echo "digest={{sha}}" >> $GITHUB_OUTPUT
 
       - name: Docker meta
         id: meta
