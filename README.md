@@ -64,6 +64,13 @@ curl http://64.227.146.19:31904
 * Access the web frontend in a browser using external LoadBalancer's public IP:
 # TODO
 
+### Deploy loadgenerator service using Helm via CI/CD
+* Update existing loadgenerator instance in order to control deployment via helm:
+    ```bash
+    kubectl -n default label deployment loadgenerator "app.kubernetes.io/managed-by=Helm"
+    kubectl -n default annotate deployment loadgenerator "meta.helm.sh/release-name=loadgenerator" "meta.helm.sh/release-namespace=default"
+    ```
+
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
 [2]: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-centos7
