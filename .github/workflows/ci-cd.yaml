@@ -24,8 +24,9 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
-      - id: checkout
-        run: echo "digest={{sha}}" >> $GITHUB_OUTPUT
+      - name: Define digest
+        id: checkout
+        run: echo "digest=${{GITHUB_SHA}}" >> $GITHUB_OUTPUT
 
       - name: Docker meta
         id: meta
@@ -72,7 +73,7 @@ jobs:
           
       - name: Render templates
         run: |
-          helm template . --set image.tag=${{ needs.build.outputs.digest }}
+          helm template . --set image.tag=${{needs.build.outputs.digest}}
 
 
 #      - name: List files in the repository
