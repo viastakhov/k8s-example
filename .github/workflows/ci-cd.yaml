@@ -21,6 +21,12 @@ jobs:
     outputs:
       sha_short: ${{ steps.checkout.outputs.sha_short }}
     steps:
+      - name: Install a chart
+        run: |
+          mkdir ~/.kube
+          echo ${{ secrets.KUBE_CONFIG }} | base64 -d > ~/.kube/config
+          export KUBECONFIG=~/.kube/config
+
       - name: Check out the repo
         uses: actions/checkout@v3
 
