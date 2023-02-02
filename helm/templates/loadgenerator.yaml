@@ -4,8 +4,11 @@ metadata:
   name: {{ .Values.loadGenerator.name }}
   namespace: {{ .Release.Namespace }}
   annotations:
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    #app.kubernetes.io/instance: {{ .Release.Name }}
+    #app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/managed-by: Helm
+    meta.helm.sh/release-name: loadgenerator
+    meta.helm.sh/release-namespace: default
 spec:
   selector:
     matchLabels:
