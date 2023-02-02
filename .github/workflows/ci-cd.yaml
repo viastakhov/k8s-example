@@ -68,7 +68,7 @@ jobs:
       - name: Helm Installation
         uses: azure/setup-helm@v1.1
         with:
-          version: v3.7.0
+          version: v2.0.0
           
       - name: Install a chart
         run: |
@@ -77,7 +77,6 @@ jobs:
           chmod 600 ~/.kube/config
           export KUBECONFIG=~/.kube/config
           helm list --all --all-namespaces
-          helm uninstall loadgenerator> -n default
           helm upgrade --install loadgenerator . --install --set image.tag=${{needs.build.outputs.sha_short}} --namespace default
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
