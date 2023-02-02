@@ -70,6 +70,15 @@ curl http://64.227.146.19:31904
     kubectl -n default label deployment loadgenerator "app.kubernetes.io/managed-by=Helm"
     kubectl -n default annotate deployment loadgenerator "meta.helm.sh/release-name=loadgenerator" "meta.helm.sh/release-namespace=default"
     ```
+* Prepare kube config:
+    ```bash
+    # backup kube config:
+    cp $HOME/.kube/config $HOME/config
+    # set public IP in $HOME/config (i.e. "server: https://64.227.132.241:6443")
+    # encrypt kube config and then use it as kube config secret in CI/CD tool:
+    cat $HOME/config | base64
+    ```
+    # TODO: add screen of secret
 * Push a commit into master branch of loadgenerator's source code
 * Verify GitHub Actions workflow runs:
 # TODO: add link and snapshot
