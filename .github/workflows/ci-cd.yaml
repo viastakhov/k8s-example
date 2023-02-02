@@ -36,7 +36,7 @@ jobs:
           tags: |
             type=semver,pattern={{version}}
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=${{build.outputs.sha_short}}
+            type=raw,value=${{steps.checkout.outputs.sha_short}}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
