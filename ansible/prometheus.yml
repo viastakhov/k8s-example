@@ -1,0 +1,29 @@
+- hosts: master-01
+  become: yes
+  become_user: centos
+  gather_facts: false
+  vars_files:
+  - vars/prom-stack.yml
+  tasks:      
+    - name: Label the nodes with custom label "prometheus"
+      shell: |
+        kubectl label nodes {{item}} node=prometheus --overwrite
+      with_items: "{{ groups['workers'] }}"
+  
+    - name: Fetch and update Prometheus Helm repository
+      shell: |
+        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+        helm repo update
+
+    - name: Create namespace for installing Prometheus operator
+      shell: |
+        kubectl create ns monitoring
+
+    - name: Configure Prometheus Helm values
+      template:
+        src: templates/prometheus-stack-values.yaml.j2
+        dest: /tmp/prometheus-stack-values.yaml
+
+    - name: Install Prometheus operator
+      shell: |
+        helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring -f /tmp/prometheus-stack-values.yaml

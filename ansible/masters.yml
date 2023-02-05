@@ -2,6 +2,8 @@
   gather_facts: yes
 
 - hosts: master-01
+  roles:
+    - kwoodson.yedit
   vars_files:
     - vars/main.yml
   become: yes
@@ -27,6 +29,19 @@
         dest: /home/centos/.kube/config
         remote_src: yes
         owner: centos
+
+    - name: Setup kube config
+      yedit:
+        src: /home/centos/.kube/config
+        key: clusters[0].cluster.server
+        value: "https://{{ hostvars[inventory_hostname].ansible_host }}:6443"
+
+    - name: Encrypt kube config
+      shell:
+        cmd: cat /home/centos/.kube/config | base64
+      register: kube_config_encrypted
+
+    - debug: var=kube_config_encrypted.stdout
 
     - name: Install pod network
       become: yes

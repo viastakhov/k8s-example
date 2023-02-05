@@ -1,0 +1,16 @@
+- hosts: master-01
+  become: yes
+  become_user: centos
+  gather_facts: false
+  vars:
+    version: 3.7.0
+  tasks:      
+    - name: Install Helm
+      shell:
+        cmd: |
+          sudo yum install wget -y
+          wget https://get.helm.sh/helm-v{{version}}-linux-386.tar.gz
+          tar xvf helm-v{{version}}-linux-386.tar.gz
+          sudo mv linux-386/helm /usr/bin
+          rm helm-v{{version}}-linux-386.tar.gz
+          rm -rf linux-386

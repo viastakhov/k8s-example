@@ -5,8 +5,15 @@ Setup Kubernetes cluster from scratch
 
 ### Prerequisites
 * An SSH key pair on your local machine<sup>[1]</sup>
-* Server running CentOS 7 with at least 2GB RAM and 2 vCPUs each and you should be able to SSH into each server as the root user with your SSH key pair<sup>[2]</sup>
+* Servers running CentOS 7 with at least 2GB RAM and 2 vCPUs each and you should be able to SSH into each server as the root user with your SSH key pair<sup>[2]</sup>
 * Ansible installed on your local machine<sup>[3],[4]</sup>
+* Extarnal load balancer is provisioned
+* Domain name is provisioned (i.e. astakhoff.ru)
+* Common names are assigned to the public IP (external load balancer):
+  * k8s.astakhoff.ru
+  * grafana.k8s.astakhoff.ru
+  * prometheus.k8s.astakhoff.ru
+  * store.k8s.astakhoff.ru
 
 ### Setting Up the Workspace Directory and Ansible
 * Setup a `./ansible/hosts.ini` file containing inventory information such as the IP addresses of your servers and the groups that each server belongs to.
@@ -15,6 +22,7 @@ Setup Kubernetes cluster from scratch
 ### Installing Kubernetes cluster
 * Execute the playbook:
     ```bash
+    ansible-galaxy install kwoodson.yedit
     ansible-playbook -i hosts main.yml
     ```
 
@@ -70,18 +78,30 @@ curl http://64.227.146.19:31904
     kubectl -n default label deployment loadgenerator "app.kubernetes.io/managed-by=Helm"
     kubectl -n default annotate deployment loadgenerator "meta.helm.sh/release-name=loadgenerator" "meta.helm.sh/release-namespace=default"
     ```
-* Prepare kube config:
+* Prepare kube config as kube config secret for CI/CD tool:
     ```bash
-    # backup kube config:
-    cp $HOME/.kube/config $HOME/config
-    # set public IP in $HOME/config (i.e. "server: https://64.227.132.241:6443")
-    # encrypt kube config and then use it as kube config secret in CI/CD tool:
-    cat $HOME/config | base64
+    cat $HOME/.kube/config | base64
     ```
     # TODO: add screen of secret
 * Push a commit into master branch of loadgenerator's source code
 * Verify GitHub Actions workflow runs:
 # TODO: add link and snapshot
+
+
+## 3. Monitoring setup
+### Install OpenEBS local PV device storage engine<sup>[6]</sup>
+```bash
+ansible-playbook -i hosts openebs.yml
+```
+# TODO: post installation verification + screens
+
+### Install Prometheus stack<sup>[7]</sup>
+* (Optional) Setup prometheus stack in `./ansible/vars/prom-stack.yml`
+* Execute the playbook:
+    ```bash
+    ansible-playbook -i hosts prometheus.yml
+    ```
+# TODO: post installation verification + screens
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
@@ -89,4 +109,5 @@ curl http://64.227.146.19:31904
 [3]: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-the-control-machine
 [4]: https://phoenixnap.com/kb/install-ansible-on-windows
 [5]: https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
-[6]: https://github.com/viastakhov/microservices-demo
+[6]: https://openebs.io/docs/user-guides/installation
+[7]: https://openebs.io/docs/stateful-applications/prometheus

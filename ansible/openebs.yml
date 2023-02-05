@@ -1,0 +1,10 @@
+- hosts: master-01
+  become: yes
+  become_user: centos
+  gather_facts: false
+  tasks:      
+    - name: Install OpenEBS local PV device storage engine
+      shell: |
+          helm repo add openebs https://openebs.github.io/charts
+          helm repo update
+          helm install openebs --namespace openebs openebs/openebs --create-namespace

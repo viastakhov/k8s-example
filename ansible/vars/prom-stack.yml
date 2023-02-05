@@ -1,0 +1,12 @@
+---
+prom_stack_fullnameOverride: new
+prom_stack_prometheus_serviceMonitorSelectorNilUsesHelmValues: false
+prom_stack_prometheus_replicas: 3
+prom_stack_prometheus_podAntiAffinity: hard
+prom_stack_prometheus_pvc_storageClassName: openebs-hostpath
+prom_stack_prometheus_pvc_resources_requests_storage: 10Gi
+prom_stack_prometheus_operator_tls_enabled: false
+prom_stack_alertmanager_replicas: 3
+prom_stack_alertmanager_podAntiAffinity: hard
+prom_stack_alertmanager_pvc_storageClassName: openebs-hostpath
+prom_stack_alertmanager_pvc_resources_requests_storage: 10Gi
