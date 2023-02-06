@@ -41,9 +41,12 @@ kubectl get po -A -o wide
 ### Checking Ingress controller
 ```bash
 kubectl get po -n ingress-nginx -o wide
+```
+![image](https://user-images.githubusercontent.com/44951703/217037320-3a6a9eaf-6717-4657-bdb4-837de1bb6cda.png)
+```bash
 kubectl get svc -n ingress-nginx
 ```
-![image](https://user-images.githubusercontent.com/44951703/215589953-065b92d5-4f40-4e88-b9b3-10a88376f423.png)
+![image](https://user-images.githubusercontent.com/44951703/217037459-b6c8a0dc-e62f-4956-a273-2c989c88169e.png)
 
 ```bash
 curl http://64.227.146.19:31904
