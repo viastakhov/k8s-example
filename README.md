@@ -163,7 +163,7 @@ curl http://k8s.astakhoff.ru
     | ------------- | ------------- |
     | CPU Usage | Detect CPU bottlenecks, setup CPU resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
     | Memory Usage | Detect high memory presure and leakage, setup memory resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
-    ![image](https://user-images.githubusercontent.com/44951703/217079328-5c9a377d-e671-47bb-8f73-73579b9d410a.png)
+    |![image](https://user-images.githubusercontent.com/44951703/217079328-5c9a377d-e671-47bb-8f73-73579b9d410a.png)||
     
   * Nodes Resourse Usage:
     | Metriс | Purpose |
