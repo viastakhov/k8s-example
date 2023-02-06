@@ -61,19 +61,19 @@ curl http://k8s.astakhoff.ru
 
 ## 2. Deploying services to Kubernetes cluster
 
-### Install cert-manager<sup>[cm1]</sup>
+### Install cert-manager<sup>[6]</sup>
 * Execute the playbook:
     ```bash
     ansible-playbook -i hosts.ini cert-manager.yml
     ```
-* Verify the installation<sup>[cm2]</sup>
+* Verify the installation<sup>[7]</sup>
     ```bash
     kubectl get pods --namespace cert-manager
     ```
     # TODO: screen
 
 ### Deploy the sample app to the cluster
-* Deploy "Online Boutique" demo application<sup>[goo]</sup>:
+* Deploy "Online Boutique" demo application<sup>[8]</sup>:
     ```bash
     kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml
     ```
@@ -108,13 +108,13 @@ curl http://k8s.astakhoff.ru
 
 
 ## 3. Monitoring setup
-### Install OpenEBS local PV device storage engine<sup>[6]</sup>
+### Install OpenEBS local PV device storage engine<sup>[9]</sup>
 ```bash
 ansible-playbook -i hosts.ini openebs.yml
 ```
 # TODO: post installation verification + screens
 
-### Install Prometheus stack<sup>[7]</sup>
+### Install Prometheus stack<sup>[10]</sup>
 * (Optional) Setup prometheus stack in `./ansible/vars/prom-stack.yml`
 * Execute the playbook:
     ```bash
@@ -167,7 +167,7 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
 # Screen
 
 ## 5. Pod Autoscaling
-### Install metrics-server<sup>[ms]</sup>
+### Install metrics-server<sup>[11]</sup>
 * Execute the playbook:
     ```bash
     ansible-playbook -i hosts.ini metrics-server.yml
@@ -204,9 +204,9 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
 [3]: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-the-control-machine
 [4]: https://phoenixnap.com/kb/install-ansible-on-windows
 [5]: https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
-[6]: https://openebs.io/docs/user-guides/installation
-[7]: https://openebs.io/docs/stateful-applications/prometheus
-[cm1]: https://cert-manager.io/docs/installation/helm/
-[cm2]: https://cert-manager.io/docs/installation/verify/#manual-verification
-[goo]: https://github.com/GoogleCloudPlatform/microservices-demo
-[ms]: https://artifacthub.io/packages/helm/metrics-server/metrics-server
+[6]: https://cert-manager.io/docs/installation/helm/
+[7]: https://cert-manager.io/docs/installation/verify/#manual-verification
+[8]: https://github.com/GoogleCloudPlatform/microservices-demo
+[9]: https://openebs.io/docs/user-guides/installation
+[10]: https://openebs.io/docs/stateful-applications/prometheus
+[11]: https://artifacthub.io/packages/helm/metrics-server/metrics-server
