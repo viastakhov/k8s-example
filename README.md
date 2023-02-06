@@ -175,7 +175,7 @@ curl http://k8s.astakhoff.ru
     | Disk Space Usage | Control disk space utilization |
     | Network Received | Inspect inbound network traffic, monitors for reception of data that exceeds the bandwidth of the network interface |
     | Network Transmitted | Inspect outbound network traffic on the interface | 
-    ![image](https://user-images.githubusercontent.com/44951703/217079019-6617da9b-e0eb-421b-860d-206b1c198dc6.png)
+    ||![image](https://user-images.githubusercontent.com/44951703/217079019-6617da9b-e0eb-421b-860d-206b1c198dc6.png)|
     ![image](https://user-images.githubusercontent.com/44951703/217079180-c503391a-71bf-4519-9ec1-edf05b5531fb.png)
 
   * Persistent Volume Usage:
@@ -183,6 +183,7 @@ curl http://k8s.astakhoff.ru
     | ------------- | ------------- |
     | Volume Space Usage | Control volume space utilization by PVC |
     | Volume Inode Usage | Control the number of inodes available on volume by PVC |
+    
     ![image](https://user-images.githubusercontent.com/44951703/217079572-f84e1806-7c42-4e79-afae-6cfc42c245a0.png)
 
 *Note*: Grafan URL: https://grafana.k8s.astakhoff.ru/ (login/password: guest/guest)
