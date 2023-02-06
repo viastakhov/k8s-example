@@ -163,7 +163,8 @@ curl http://k8s.astakhoff.ru
     | ------------- | ------------- |
     | CPU Usage | Detect CPU bottlenecks, setup CPU resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
     | Memory Usage | Detect high memory presure and leakage, setup memory resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217079328-5c9a377d-e671-47bb-8f73-73579b9d410a.png)
+    
   * Nodes Resourse Usage:
     | Metriс | Purpose |
     | ------------- | ------------- |
@@ -174,15 +175,17 @@ curl http://k8s.astakhoff.ru
     | Disk Space Usage | Control disk space utilization |
     | Network Received | Inspect inbound network traffic, monitors for reception of data that exceeds the bandwidth of the network interface |
     | Network Transmitted | Inspect outbound network traffic on the interface | 
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217079019-6617da9b-e0eb-421b-860d-206b1c198dc6.png)
+    ![image](https://user-images.githubusercontent.com/44951703/217079180-c503391a-71bf-4519-9ec1-edf05b5531fb.png)
+
   * Persistent Volume Usage:
     | Metriс | Purpose |
     | ------------- | ------------- |
     | Volume Space Usage | Control volume space utilization by PVC |
     | Volume Inode Usage | Control the number of inodes available on volume by PVC |
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217079572-f84e1806-7c42-4e79-afae-6cfc42c245a0.png)
 
-   # TODO: url + creds
+*Note*: Grafan URL: https://grafana.k8s.astakhoff.ru/ (login/password: guest/guest)
 
 ## 4. Logging setup
 ### Install Loki stack
