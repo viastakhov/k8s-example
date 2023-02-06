@@ -31,12 +31,12 @@ Setup Kubernetes cluster from scratch
 ```bash
 kubectl get no -o wide
 ```
-![image](https://user-images.githubusercontent.com/44951703/217030314-0f8a8dd1-ff23-47c3-ad59-e1a170111735.png)
+![image](https://user-images.githubusercontent.com/44951703/217035876-4690f8ac-f752-4733-aeed-bb019a426d33.png)
 
 ```bash
 kubectl get po -A -o wide
 ```
-![image](https://user-images.githubusercontent.com/44951703/215588982-e5fdd81b-04ed-4dc8-a496-ed84bb73a6bc.png)
+![image](https://user-images.githubusercontent.com/44951703/217036950-b154ecfe-0d2c-466d-a0f7-bce1a94fdcd7.png)
 
 ### Checking Ingress controller
 ```bash
