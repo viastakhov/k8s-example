@@ -31,7 +31,7 @@ Setup Kubernetes cluster from scratch
 ```bash
 kubectl get no -o wide
 ```
-![image](https://user-images.githubusercontent.com/44951703/215588828-364b248f-26e6-4418-9e6a-c5a83593ce0e.png)
+![image](https://user-images.githubusercontent.com/44951703/217030314-0f8a8dd1-ff23-47c3-ad59-e1a170111735.png)
 
 ```bash
 kubectl get po -A -o wide
