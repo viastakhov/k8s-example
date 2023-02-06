@@ -111,8 +111,9 @@ curl http://k8s.astakhoff.ru
   * https://github.com/viastakhov/k8s-example/tree/main/helm
  
 * Verify GitHub Actions workflow runs:
-# TODO: add link and snapshot
+![image](https://user-images.githubusercontent.com/44951703/217055116-fcdbd230-7d72-4a5e-b9ff-ff84fe082134.png)
 
+*Note*: GitHub Actions workflow configuration here: https://github.com/viastakhov/k8s-example/blob/main/.github/workflows/ci-cd.yaml
 
 ## 3. Monitoring setup
 ### Install OpenEBS local PV device storage engine<sup>[9]</sup>
