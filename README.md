@@ -70,7 +70,7 @@ curl http://k8s.astakhoff.ru
     ```bash
     kubectl get pods --namespace cert-manager
     ```
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217049002-79b168b0-4610-4742-a42a-4e67c6b9c10e.png)
 
 ### Deploy the sample app to the cluster
 * Deploy "Online Boutique" demo application<sup>[8]</sup>:
