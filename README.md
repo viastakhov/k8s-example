@@ -117,10 +117,25 @@ curl http://k8s.astakhoff.ru
 
 ## 3. Monitoring setup
 ### Install OpenEBS local PV device storage engine<sup>[9]</sup>
-```bash
-ansible-playbook -i hosts.ini openebs.yml
-```
-# TODO: post installation verification + screens
+* Execute the playbook:
+  ```bash
+  ansible-playbook -i hosts.ini openebs.yml
+  ```
+* Verify installation:
+  * Verify pods:
+    ```bash
+    kubectl get pods -n openebs
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217057070-0b279e32-b952-49e5-ad1d-92e241d3c723.png)
+  * Verify StorageClasses:
+    ```bash
+    kubectl get sc
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217057452-63067185-5ddb-40cc-8f77-189fd8d37bac.png)
+  * Verify StorageClasses:
+    ```bash
+    kubectl get sc
+    ```
 
 ### Install Prometheus stack<sup>[10]</sup>
 * (Optional) Setup prometheus stack in `./ansible/vars/prom-stack.yml`
