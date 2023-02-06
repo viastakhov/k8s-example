@@ -141,6 +141,25 @@ ansible-playbook -i hosts.ini openebs.yml
     | Volume Inode Usage | Control the number of inodes available on volume by PVC |
     # TODO: screen
 
+   # TODO: url + creds
+
+## 4. Logging setup
+### Install Loki stack
+* Execute the playbook:
+    ```bash
+    ansible-playbook -i hosts.ini loki.yml
+    ```
+* Wait for the Pods to be ready:
+    ```bash
+    kubectl get po -n monitoring -o wide --selector release=loki
+    ```
+    # TODO: screen
+
+### Pod logs inspection
+Open "Loki Logs" dashboard in Grafana in order to review pod logs:
+# Screen
+
+
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys

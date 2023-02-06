@@ -1,0 +1,13 @@
+- hosts: master-01
+  become: yes
+  become_user: centos
+  gather_facts: false
+  tasks:      
+    - name: Fetch and update Loki Helm repository
+      shell: |
+        helm repo add loki https://grafana.github.io/loki/charts
+        helm repo update
+
+    - name: Install Loki stack
+      shell: |
+        helm upgrade --install loki loki/loki-stack --namespace monitoring
