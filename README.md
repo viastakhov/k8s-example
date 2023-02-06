@@ -132,10 +132,6 @@ curl http://k8s.astakhoff.ru
     kubectl get sc
     ```
     ![image](https://user-images.githubusercontent.com/44951703/217057452-63067185-5ddb-40cc-8f77-189fd8d37bac.png)
-  * Verify StorageClasses:
-    ```bash
-    kubectl get sc
-    ```
 
 ### Install Prometheus stack<sup>[10]</sup>
 * (Optional) Setup prometheus stack in `./ansible/vars/prom-stack.yml`
@@ -143,7 +139,22 @@ curl http://k8s.astakhoff.ru
     ```bash
     ansible-playbook -i hosts.ini prometheus.yml
     ```
-# TODO: post installation verification + screens
+* Verify installation:
+  * Verify Prometheus related pods are installed under monitoring namespace: 
+    ```bash
+    kubectl get pod -n monitoring
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217058441-0c9af990-caf1-4e64-925b-a354415055bf.png)
+  * Verify Prometheus related PVCs are created under monitoring namespace:
+    ```bash
+    kubectl get pvc -n monitoring
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217058899-107abf00-8dba-4503-94af-2393fa4493c0.png)
+  * Verify Prometheus related services created under monitoring namespace:
+    ```bash
+    kubectl get svc -n monitoring
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217059136-fe922aca-9ff5-4541-bc77-74f7ef895387.png)
 
 * Import Grafana dashboards from /dashboard folder
 * There are following metrics being used:
