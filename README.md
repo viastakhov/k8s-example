@@ -49,11 +49,15 @@ kubectl get svc -n ingress-nginx
 ![image](https://user-images.githubusercontent.com/44951703/217037459-b6c8a0dc-e62f-4956-a273-2c989c88169e.png)
 
 ```bash
-curl http://64.227.146.19:31904
+curl http://64.227.132.241:30080
 ```
-![image](https://user-images.githubusercontent.com/44951703/215590958-07459d3e-a309-4d58-90d2-39605bac89de.png)
+![image](https://user-images.githubusercontent.com/44951703/217039487-280962bf-f9ce-49d9-9204-bcfc9d80dccd.png)
 
-# TODO: curl to LB
+```bash
+curl http://k8s.astakhoff.ru
+```
+![image](https://user-images.githubusercontent.com/44951703/217039785-461f0294-2dc9-4ec3-9178-5609311cd904.png)
+
 
 ## 2. Deploying services to Kubernetes cluster
 
