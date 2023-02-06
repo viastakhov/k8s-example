@@ -222,12 +222,14 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
 ### Setup pod autoscalling
 * Create HorizontalPodAutoscaler resource for frontend service:
     ```bash
-    kubectl apply -f ...
+    kubectl apply -f https://raw.githubusercontent.com/viastakhov/k8s-example/main/manifests/frontend-hpa.yaml
     ```  
 * Verify createdreaource:
     ```bash
     kubectl get hpa
     ```
+    ![image](https://user-images.githubusercontent.com/44951703/217097816-12774e21-249e-454e-b0aa-2501f7568bac.png)
+    
 * Increase workload on frontend service:
     ```bash
     kubectl set env deployment/loadgenerator USERS=500
