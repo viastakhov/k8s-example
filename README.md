@@ -104,7 +104,8 @@ curl http://k8s.astakhoff.ru
     ```bash
     cat $HOME/.kube/config | base64
     ```
-    # TODO: add screen of secret
+    ![image](https://user-images.githubusercontent.com/44951703/217053762-dc67be0f-ff8b-424e-85a5-076e9401b48a.png)
+
 * Push a commit into master branch of loadgenerator's source code
 * Verify GitHub Actions workflow runs:
 # TODO: add link and snapshot
