@@ -66,7 +66,7 @@ curl http://64.227.146.19:31904
     # TODO: screen
 
 ### Deploy the sample app to the cluster
-* Deploy "Online Boutique" demo application:
+* Deploy "Online Boutique" demo application<sup>[goo]</sup>:
     ```bash
     kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml
     ```
@@ -159,6 +159,36 @@ ansible-playbook -i hosts.ini openebs.yml
 Open "Loki Logs" dashboard in Grafana in order to review pod logs:
 # Screen
 
+## 5. Pod Autoscaling
+### Install metrics-server<sup>[ms]</sup>
+* Execute the playbook:
+    ```bash
+    ansible-playbook -i hosts.ini metrics-server.yml
+    ```
+* Check whether the metrics-server is available and running
+    ```bash
+    kubectl get apiservices | grep metrics.k8s.io
+     ```
+    # TODO: screen
+
+### Setup pod autoscalling
+* Create HorizontalPodAutoscaler resource for frontend service:
+    ```bash
+    kubectl apply -f ...
+    ```  
+* Verify createdreaource:
+    ```bash
+    kubectl get hpa
+    ```
+* Increase workload on frontend service:
+    ```bash
+    kubectl set env deployment/loadgenerator USERS=500
+    ```
+* There are several frontend pods appeared:
+    ```
+    kubectl get pod --selector app=frontend
+    ```
+    # TODO: screen
 
 
 ---
@@ -171,3 +201,5 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
 [7]: https://openebs.io/docs/stateful-applications/prometheus
 [cm1]: https://cert-manager.io/docs/installation/helm/
 [cm2]: https://cert-manager.io/docs/installation/verify/#manual-verification
+[goo]: https://github.com/GoogleCloudPlatform/microservices-demo
+[ms]: https://artifacthub.io/packages/helm/metrics-server/metrics-server
