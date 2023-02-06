@@ -27,7 +27,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 15324,
   "graphTooltip": 0,
-  "id": 33,
+  "id": 34,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -37,8 +37,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "type": "loki",
-        "uid": "yiJiwL0Vz"
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -83,10 +83,11 @@
       "targets": [
         {
           "datasource": {
-            "type": "loki",
-            "uid": "yiJiwL0Vz"
+            "type": "prometheus",
+            "uid": "prometheus"
           },
-          "expr": "sum(count_over_time({namespace=\"$namespace\", pod=~\"$pod\"} |~ \"$search\"[$__interval]))",
+          "expr": "{namespace=\"$namespace\", pod=~\"$pod\"}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -124,7 +125,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "yiJiwL0Vz"
+        "uid": "OVxSkyAVk"
       },
       "gridPos": {
         "h": 25,
@@ -148,9 +149,12 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "yiJiwL0Vz"
+            "uid": "OVxSkyAVk"
           },
-          "expr": "{namespace=\"$namespace\", pod=~\"$pod\"} |~ \"$search\"",
+          "editorMode": "code",
+          "expr": "{namespace=\"$namespace\", pod=~\"$pod\"}",
+          "queryType": "range",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -196,7 +200,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "default",
           "value": "default"
         },
@@ -229,10 +233,10 @@
         "current": {
           "selected": true,
           "text": [
-            "All"
+            "frontend-6dc67f5465-dxsqz"
           ],
           "value": [
-            "$__all"
+            "frontend-6dc67f5465-dxsqz"
           ]
         },
         "datasource": {
@@ -261,7 +265,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "",
           "value": ""
         },
@@ -282,7 +286,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-10m",
     "to": "now"
   },
   "timepicker": {
