@@ -92,7 +92,7 @@ curl http://k8s.astakhoff.ru
   ```
   ![image](https://user-images.githubusercontent.com/44951703/217051804-bd930905-b871-4ead-9455-caaaf40a8d44.png)
 * Access the web frontend in a browser using external LoadBalancer's public IP:
-![image](https://user-images.githubusercontent.com/44951703/217050986-be0a4018-ea25-4f87-8fbf-25c860ad811c.png)
+  ![image](https://user-images.githubusercontent.com/44951703/217050986-be0a4018-ea25-4f87-8fbf-25c860ad811c.png)
 
 ### Deploy loadgenerator service using Helm via CI/CD
 * Update existing loadgenerator instance in order to control deployment via helm:
@@ -106,7 +106,10 @@ curl http://k8s.astakhoff.ru
     ```
     ![image](https://user-images.githubusercontent.com/44951703/217053762-dc67be0f-ff8b-424e-85a5-076e9401b48a.png)
 
-* Push a commit into master branch of loadgenerator's source code
+* Push a commit into master branch of loadgenerator's source code or prepared Helm chart:
+  * https://github.com/viastakhov/k8s-example/tree/main/src/loadgenerator
+  * https://github.com/viastakhov/k8s-example/tree/main/helm
+ 
 * Verify GitHub Actions workflow runs:
 # TODO: add link and snapshot
 
