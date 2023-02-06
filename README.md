@@ -217,7 +217,7 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
     ```bash
     kubectl get apiservices | grep metrics.k8s.io
      ```
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217097468-aa3ae1b4-8386-4921-b069-d3e81cbcbb2c.png)
 
 ### Setup pod autoscalling
 * Create HorizontalPodAutoscaler resource for frontend service:
