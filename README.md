@@ -165,8 +165,6 @@ curl http://k8s.astakhoff.ru
     | Memory Usage | Detect high memory presure and leakage, setup memory resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
  
     ![image](https://user-images.githubusercontent.com/44951703/217079328-5c9a377d-e671-47bb-8f73-73579b9d410a.png)
-
-
     
   * Nodes Resourse Usage:
     | Metriс | Purpose |
@@ -206,7 +204,8 @@ curl http://k8s.astakhoff.ru
 
 ### Pod logs inspection
 Open "Loki Logs" dashboard in Grafana in order to review pod logs:
-
+![image](https://user-images.githubusercontent.com/44951703/217096501-d7fcae4b-fcff-4dda-b87e-2cc3d186cf4f.png)
+![image](https://user-images.githubusercontent.com/44951703/217096887-96eea37b-12c4-465e-81d6-229e1178369c.png)
 
 ## 5. Pod Autoscaling
 ### Install metrics-server<sup>[11]</sup>
