@@ -17,13 +17,14 @@ Setup Kubernetes cluster from scratch
 
 ### Setting Up the Workspace Directory and Ansible
 * Setup a `./ansible/hosts.ini` file containing inventory information such as the IP addresses of your servers and the groups that each server belongs to.
+* Define common names in `./ansible/vars/cnames.yml`
 * (Optional) Define Ingress NodePorts in `./ansible/vars/main.yml`<sup>[5]</sup>
 
 ### Installing Kubernetes cluster
 * Execute the playbook:
     ```bash
     ansible-galaxy install kwoodson.yedit
-    ansible-playbook -i hosts main.yml
+    ansible-playbook -i hosts.ini main.yml
     ```
 
 ### Checking Kubernetes cluster
@@ -53,6 +54,17 @@ curl http://64.227.146.19:31904
 
 ## 2. Deploying services to Kubernetes cluster
 
+### Install cert-manager<sup>[cm1]</sup>
+* Execute the playbook:
+    ```bash
+    ansible-playbook -i hosts.ini cert-manager.yml
+    ```
+* Verify the installation<sup>[cm2]</sup>
+    ```bash
+    kubectl get pods --namespace cert-manager
+    ```
+    # TODO: screen
+
 ### Deploy the sample app to the cluster
 * Deploy "Online Boutique" demo application:
     ```bash
@@ -65,7 +77,7 @@ curl http://64.227.146.19:31904
     ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
 * Deploy ingress resource for frontend service:
     ```bash
-    kubectl apply -f https://raw.githubusercontent.com/viastakhov/k8s-example/main/kubernetes-manifests/frontend-ingress.yaml
+    ansible-playbook -i hosts.ini frontend-ingress-resource.yml
     ```
 * Access the web frontend in a browser using public IP of worker nodes and ingress controller NodePort port:
 # TODO
@@ -91,7 +103,7 @@ curl http://64.227.146.19:31904
 ## 3. Monitoring setup
 ### Install OpenEBS local PV device storage engine<sup>[6]</sup>
 ```bash
-ansible-playbook -i hosts openebs.yml
+ansible-playbook -i hosts.ini openebs.yml
 ```
 # TODO: post installation verification + screens
 
@@ -99,9 +111,36 @@ ansible-playbook -i hosts openebs.yml
 * (Optional) Setup prometheus stack in `./ansible/vars/prom-stack.yml`
 * Execute the playbook:
     ```bash
-    ansible-playbook -i hosts prometheus.yml
+    ansible-playbook -i hosts.ini prometheus.yml
     ```
 # TODO: post installation verification + screens
+
+* Import Grafana dashboards from /dashboard folder
+* There are following metrics being used:
+  * Pod Resource Usage by Namespace:
+    | Metriс | Purpose |
+    | ------------- | ------------- |
+    | CPU Usage | Detect CPU bottlenecks, setup CPU resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
+    | Memory Usage | Detect high memory presure and leakage, setup memory resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
+    # TODO: screen
+  * Nodes Resourse Usage:
+    | Metriс | Purpose |
+    | ------------- | ------------- |
+    | CPU Usage | Control memory usage on the node, add additional CPU cores on demand |
+    | Load Average | Control system load on the node, add additional CPU cores on demand |
+    | Memory Usage | Control memory utilization on the node, provide additional CPU cores on demand |
+    | Disk I/O | Detect disk I/O bottleneck |
+    | Disk Space Usage | Control disk space utilization |
+    | Network Received | Inspect inbound network traffic, monitors for reception of data that exceeds the bandwidth of the network interface |
+    | Network Transmitted | Inspect outbound network traffic on the interface | 
+    # TODO: screen
+  * Persistent Volume Usage:
+    | Metriс | Purpose |
+    | ------------- | ------------- |
+    | Volume Space Usage | Control volume space utilization by PVC |
+    | Volume Inode Usage | Control the number of inodes available on volume by PVC |
+    # TODO: screen
+
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
@@ -111,3 +150,5 @@ ansible-playbook -i hosts openebs.yml
 [5]: https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
 [6]: https://openebs.io/docs/user-guides/installation
 [7]: https://openebs.io/docs/stateful-applications/prometheus
+[cm1]: https://cert-manager.io/docs/installation/helm/
+[cm2]: https://cert-manager.io/docs/installation/verify/#manual-verification

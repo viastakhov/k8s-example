@@ -4,6 +4,7 @@
   gather_facts: false
   vars_files:
   - vars/prom-stack.yml
+  - vars/cnames.yml
   tasks:      
     - name: Label the nodes with custom label "prometheus"
       shell: |
@@ -15,15 +16,27 @@
         helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
         helm repo update
 
-    - name: Create namespace for installing Prometheus operator
-      shell: |
-        kubectl create ns monitoring
-
     - name: Configure Prometheus Helm values
       template:
-        src: templates/prometheus-stack-values.yaml.j2
-        dest: /tmp/prometheus-stack-values.yaml
+        src: templates/prom-stack-values.yaml.j2
+        dest: /tmp/prom-stack-values.yaml
 
     - name: Install Prometheus operator
       shell: |
-        helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring -f /tmp/prometheus-stack-values.yaml
+        helm install prometheus prometheus-community/kube-prometheus-stack --create-namespace --namespace monitoring -f /tmp/prom-stack-values.yaml
+
+    - name: Create cert-issuer.yaml
+      template:
+        src: templates/cert-issuer.yaml.j2
+        dest: /tmp/cert-issuer.yaml
+
+    - name: Deploy Let's Encrypt Issuer
+      command: kubectl apply -f /tmp/cert-issuer.yaml --namespace monitoring
+
+    - name: Create prom-stack-ingress-resource.yaml
+      template:
+        src: templates/prom-stack-ingress-resource.yaml.j2
+        dest: /tmp/prom-stack-ingress-resource.yaml
+
+    - name: Deploy ingress resource for Prometheus stack
+      command: kubectl apply -f /tmp/prom-stack-ingress-resource.yaml --namespace monitoring

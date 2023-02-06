@@ -1,0 +1,6 @@
+---
+admin_email: viastakhov@mail.ru
+
+cname_store_app: store.k8s.astakhoff.ru
+cname_grafana_app: grafana.k8s.astakhoff.ru
+cname_prometheus_app: prometheus.k8s.astakhoff.ru

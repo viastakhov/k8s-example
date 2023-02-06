@@ -9,7 +9,7 @@ on:
       - '**/.gitignore'
       - '**/LICENSE'
       - 'ansible/**'
-      - 'kubernetes-manifests/**'
+      - 'dashboards/**'
       
 jobs:
   build:

@@ -1,0 +1,22 @@
+- hosts: master-01
+  become: true
+  become_user: centos
+  gather_facts: false
+  vars_files:
+    - vars/cnames.yml  
+  tasks:
+    - name: Create cert-issuer.yaml
+      template:
+        src: templates/cert-issuer.yaml.j2
+        dest: /tmp/cert-issuer.yaml
+
+    - name: Deploy Let's Encrypt Issuer
+      command: kubectl apply -f /tmp/cert-issuer.yaml
+
+    - name: Create frontend-ingress-resource.yaml
+      template:
+        src: templates/frontend-ingress-resource.yaml.j2
+        dest: /tmp/frontend-ingress-resource.yaml
+
+    - name: Deploy ingress resource for frontend service
+      command: kubectl apply -f /tmp/frontend-ingress-resource.yaml

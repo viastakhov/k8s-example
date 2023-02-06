@@ -6,14 +6,20 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - {{ cname_prometheus_app }}
+    - {{ cname_grafana_app }}
+    secretName: prom-stack-k8s-tls
   defaultBackend:
     service:
       name: prometheus-grafana
       port:
         number: 80
   rules:
-    - host: grafana.k8s.astakhoff.ru
+    - host: {{ cname_grafana_app }}
       http:
         paths:
           - path: /
@@ -23,13 +29,13 @@ spec:
                 name: prometheus-grafana
                 port:
                   number: 80
-    - host: prometheus.k8s.astakhoff.ru
+    - host: {{ cname_prometheus_app }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: new-prometheus
+                name: {{ prom_stack_fullnameOverride }}-prometheus
                 port:
                   number: 9090
