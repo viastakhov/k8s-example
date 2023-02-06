@@ -188,7 +188,7 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
     ```
     kubectl get pod --selector app=frontend
     ```
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217029942-77945874-295c-46d9-ba8c-2d1eb0d9b435.png)
 
 
 ---
