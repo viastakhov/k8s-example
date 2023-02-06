@@ -254,6 +254,9 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
     ```
     ![image](https://user-images.githubusercontent.com/44951703/217100752-1e50a17a-aa20-479e-b52b-0775ba3e48f4.png)
 
+# 6. Infrastructure development plan
+WIP 
+
 
 ---
 [1]: https://https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#generating-and-working-with-ssh-keys
