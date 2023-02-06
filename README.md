@@ -234,11 +234,29 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
     ```bash
     kubectl set env deployment/loadgenerator USERS=500
     ```
-* There are several frontend pods appeared:
+* Watch for the appearance of several frontend pods:
+    ```
+    kubectl get pod --selector app=frontend -w
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217098497-fdab7abf-6e05-4767-99d3-6a86471ecd27.png)
     ```
     kubectl get pod --selector app=frontend
     ```
-    ![image](https://user-images.githubusercontent.com/44951703/217029942-77945874-295c-46d9-ba8c-2d1eb0d9b435.png)
+    ![image](https://user-images.githubusercontent.com/44951703/217098987-bf9ace5b-b802-4a74-b9d2-56e6cc0076f6.png)
+    
+* Decrease workload on frontend service:
+    ```bash
+    kubectl set env deployment/loadgenerator USERS=1
+    ```
+* Watch for the terminating of several frontend pods: 
+    ```
+    kubectl get pod --selector app=frontend -w
+    ``` 
+    ![image](https://user-images.githubusercontent.com/44951703/217100435-31228e80-62e7-4450-83c6-268c769f72e0.png)
+    ```
+    kubectl get pod --selector app=frontend
+    ```
+    ![image](https://user-images.githubusercontent.com/44951703/217100752-1e50a17a-aa20-479e-b52b-0775ba3e48f4.png)
 
 
 ---
