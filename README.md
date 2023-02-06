@@ -59,7 +59,7 @@ curl http://k8s.astakhoff.ru
 ![image](https://user-images.githubusercontent.com/44951703/217039785-461f0294-2dc9-4ec3-9178-5609311cd904.png)
 
 
-## 2. Deploying services to Kubernetes cluster
+## 2. Deploying Services to Kubernetes Cluster
 
 ### Install cert-manager<sup>[6]</sup>
 * Execute the playbook:
@@ -115,7 +115,7 @@ curl http://k8s.astakhoff.ru
 
 *Note*: GitHub Actions workflow configuration here: https://github.com/viastakhov/k8s-example/blob/main/.github/workflows/ci-cd.yaml
 
-## 3. Monitoring setup
+## 3. Monitoring Setup
 ### Install OpenEBS local PV device storage engine<sup>[9]</sup>
 * Execute the playbook:
   ```bash
@@ -190,7 +190,7 @@ curl http://k8s.astakhoff.ru
 
 *Note*: Grafan URL: https://grafana.k8s.astakhoff.ru/ (login/password: guest/guest)
 
-## 4. Logging setup
+## 4. Logging Setup
 ### Install Loki stack
 * Execute the playbook:
     ```bash
@@ -254,7 +254,7 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
     ```
     ![image](https://user-images.githubusercontent.com/44951703/217100752-1e50a17a-aa20-479e-b52b-0775ba3e48f4.png)
 
-# 6. Infrastructure development plan
+# 6. Infrastructure Development Plan
 WIP 
 
 
