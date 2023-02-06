@@ -81,7 +81,7 @@ curl http://k8s.astakhoff.ru
     ```bash
     watch kubectl get pods -o wide
     ```
-    ![image](https://user-images.githubusercontent.com/44951703/216015460-aba56e89-8c48-41e9-9305-e36445bfc309.png)
+    ![image](https://user-images.githubusercontent.com/44951703/217049836-aec046a2-22a4-42ec-a272-de02c49dad7b.png)
 * Deploy ingress resource for frontend service:
     ```bash
     ansible-playbook -i hosts.ini frontend-ingress-resource.yml
