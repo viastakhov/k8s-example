@@ -86,10 +86,13 @@ curl http://k8s.astakhoff.ru
     ```bash
     ansible-playbook -i hosts.ini frontend-ingress-resource.yml
     ```
-* Access the web frontend in a browser using public IP of worker nodes and ingress controller NodePort port:
-# TODO
+* Access the web frontend using public IP of the worker node and ingress controller NodePort port:
+  ```bash
+  curl -kI -H 'Host: store.k8s.astakhoff.ru' https://64.227.136.238:30443
+  ```
+  ![image](https://user-images.githubusercontent.com/44951703/217051804-bd930905-b871-4ead-9455-caaaf40a8d44.png)
 * Access the web frontend in a browser using external LoadBalancer's public IP:
-# TODO
+![image](https://user-images.githubusercontent.com/44951703/217050986-be0a4018-ea25-4f87-8fbf-25c860ad811c.png)
 
 ### Deploy loadgenerator service using Helm via CI/CD
 * Update existing loadgenerator instance in order to control deployment via helm:
