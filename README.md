@@ -163,7 +163,10 @@ curl http://k8s.astakhoff.ru
     | ------------- | ------------- |
     | CPU Usage | Detect CPU bottlenecks, setup CPU resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
     | Memory Usage | Detect high memory presure and leakage, setup memory resource requests/limits and VerticalPodAutoscaler/HorizontalPodAutoscaler |
-    |![image](https://user-images.githubusercontent.com/44951703/217079328-5c9a377d-e671-47bb-8f73-73579b9d410a.png)||
+ 
+    ![image](https://user-images.githubusercontent.com/44951703/217079328-5c9a377d-e671-47bb-8f73-73579b9d410a.png)
+
+
     
   * Nodes Resourse Usage:
     | Metriс | Purpose |
@@ -175,7 +178,8 @@ curl http://k8s.astakhoff.ru
     | Disk Space Usage | Control disk space utilization |
     | Network Received | Inspect inbound network traffic, monitors for reception of data that exceeds the bandwidth of the network interface |
     | Network Transmitted | Inspect outbound network traffic on the interface | 
-    ||![image](https://user-images.githubusercontent.com/44951703/217079019-6617da9b-e0eb-421b-860d-206b1c198dc6.png)|
+    
+    ![image](https://user-images.githubusercontent.com/44951703/217079019-6617da9b-e0eb-421b-860d-206b1c198dc6.png)
     ![image](https://user-images.githubusercontent.com/44951703/217079180-c503391a-71bf-4519-9ec1-edf05b5531fb.png)
 
   * Persistent Volume Usage:
@@ -198,11 +202,11 @@ curl http://k8s.astakhoff.ru
     ```bash
     kubectl get po -n monitoring -o wide --selector release=loki
     ```
-    # TODO: screen
+    ![image](https://user-images.githubusercontent.com/44951703/217087175-a6542ef2-4ab3-4062-aca3-fbf778bb8cc0.png)
 
 ### Pod logs inspection
 Open "Loki Logs" dashboard in Grafana in order to review pod logs:
-# Screen
+
 
 ## 5. Pod Autoscaling
 ### Install metrics-server<sup>[11]</sup>
