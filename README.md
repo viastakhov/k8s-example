@@ -188,7 +188,7 @@ curl http://k8s.astakhoff.ru
     
     ![image](https://user-images.githubusercontent.com/44951703/217079572-f84e1806-7c42-4e79-afae-6cfc42c245a0.png)
 
-*Note*: Grafan URL: https://grafana.k8s.astakhoff.ru/ (login/password: guest/guest)
+***Note**: Grafan URL: https://grafana.k8s.astakhoff.ru (login/password: guest/guest)*
 
 ## 4. Logging Setup
 ### Install Loki stack
@@ -206,6 +206,8 @@ curl http://k8s.astakhoff.ru
 Open "Loki Logs" dashboard in Grafana in order to review pod logs:
 ![image](https://user-images.githubusercontent.com/44951703/217096501-d7fcae4b-fcff-4dda-b87e-2cc3d186cf4f.png)
 ![image](https://user-images.githubusercontent.com/44951703/217096887-96eea37b-12c4-465e-81d6-229e1178369c.png)
+
+***Note**: Grafan URL: https://grafana.k8s.astakhoff.ru (login/password: guest/guest)*
 
 ## 5. Pod Autoscaling
 ### Install metrics-server<sup>[11]</sup>
@@ -255,7 +257,7 @@ Open "Loki Logs" dashboard in Grafana in order to review pod logs:
     ![image](https://user-images.githubusercontent.com/44951703/217100752-1e50a17a-aa20-479e-b52b-0775ba3e48f4.png)
 
 # 6. Infrastructure Development Plan
-WIP 
+Please reviewe the document [*IDP*](IDP.md) (draft, not translated yet).
 
 
 ---
